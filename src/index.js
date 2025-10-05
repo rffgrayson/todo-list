@@ -1,3 +1,6 @@
+import "./styles.css";
+
+
 class Todo {
     constructor(title, description, due) {
         this.title = title;
@@ -44,3 +47,5 @@ console.log(todo1);
 console.log(file1);
 console.log("todo1.status:", todo1.status);
 console.log("folder todo status:", file1.list[0].status);
+
+    
