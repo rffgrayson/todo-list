@@ -168,34 +168,37 @@ aside::before {
 .item-section {
   display: flex;
   flex-direction: column;
-  grid-template-rows: auto auto auto;
   gap: 0.5rem 1rem;
 }
 
+.todo-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    border-bottom: 1px solid rgba(199, 18, 32, 0.2);
+    letter-spacing: 0.5px;
+    padding-bottom: 0.25rem;
+}
 
 .todo-title {
-  grid-column: 2;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #2c2c2c;
-  letter-spacing: 0.5px;
-}
-
-.todo-description {
-  grid-column: 2;
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.5;
-  font-weight: 300;
-}
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #2c2c2c;
+  }
 
 .todo-date {
-  grid-column: 2;
-  font-size: 0.85rem;
-  color: #999;
-  font-weight: 400;
-  margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #999;
+    font-weight: 400;
+    margin-top: auto;
 }
+  
+.todo-description {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  
 
 .button-section {
     position: absolute;
@@ -212,8 +215,8 @@ aside::before {
   
 
 .button-section svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     transition: filter 0.3s ease, transform 0.3s ease;
 }
 
