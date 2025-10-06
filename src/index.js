@@ -66,9 +66,11 @@ function addTodoLibrary (todo) {
     newDiv.innerHTML += `
     <div class="todo-item" data-priority="high">
       <div class="item-section">
-        <span class="todo-title">${todo.title}</span>
+        <div class="todo-header">
+            <span class="todo-title">${todo.title}</span>
+            <span class="todo-date">Due:${todo.due}</span>
+        </div>
         <span class="todo-description">${todo.description}</span>
-        <span class="todo-date">Due:${todo.due}</span>
       </div>
       <div class="button-section">
         <button class="checkmark-btn">
