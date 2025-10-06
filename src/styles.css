@@ -133,6 +133,8 @@ aside::before {
 
 .todo-list {
     padding: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));;
 }
 
 .todo-item {
