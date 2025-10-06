@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 1px dotted red;
 }
 
 body {
     min-height: 100vh;
     display: grid;
     grid-template-columns: auto 1fr;
-    font-family: Arial, sans-serif;
+    font-family: 'Noto+Sans+JP', Arial, sans-serif;
     font-weight: 500;
 }
 
@@ -128,3 +131,68 @@ aside::before {
 .project-list {
     list-style: none;
 }
+
+.todo-list {
+    margin: 1rem;
+}
+
+.todo-item {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.todo-item:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.item-section {
+  display: flex;
+  flex-direction: column;
+  grid-template-rows: auto auto auto;
+  gap: 0.5rem 1rem;
+}
+
+
+.todo-title {
+  grid-column: 2;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  letter-spacing: 0.5px;
+}
+
+.todo-description {
+  grid-column: 2;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.todo-date {
+  grid-column: 2;
+  font-size: 0.85rem;
+  color: #999;
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+
+/* Checked state */
+input[type="checkbox"]:checked ~ .todo-title {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+input[type="checkbox"]:checked ~ .todo-description {
+  opacity: 0.4;
+}
+
