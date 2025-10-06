@@ -197,6 +197,7 @@ aside::before {
 .button-section svg {
     width: 14px;
     height: 14px;
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 button {
@@ -206,11 +207,16 @@ button {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
 button:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-    transform: translateY(-2px);
-    scale: 1.2;
+    transform: translateY(-2px) scale(1.2);
+    background: #0e0101;
 }
 
+.button-section button:hover svg {
+    filter: brightness(0) invert(1);
+    transform: rotate(360deg);
+}
