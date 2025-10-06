@@ -205,13 +205,3 @@ aside::before {
     height: 14px;
 }
 
-/* Checked state */
-input[type="checkbox"]:checked ~ .todo-title {
-  text-decoration: line-through;
-  opacity: 0.5;
-}
-
-input[type="checkbox"]:checked ~ .todo-description {
-  opacity: 0.4;
-}
-
