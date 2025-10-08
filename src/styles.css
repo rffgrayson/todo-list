@@ -179,16 +179,97 @@ aside::before {
     gap: 0.5rem;
 }
 
-.todo-title, .due-form {
-    width: 100%;
-    border: 1px solid #ccc;
+.todo-title {
     border-radius: 4px;
     font-size: 1rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    gap: 0.5rem; 
+    align-items: center;
 }
 
+.todo-title label, .due-form label {
+  color: #2c2c2c;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
 
+.todo-title input[type="text"] {
+    padding: 0.5rem;
+    border: 2px solid #2c2c2c;
+    background-color: #f5f5f0;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.form-elements textarea {
+    padding: 0.85rem;
+    border: 2px solid #2c2c2c;
+    background-color: #f5f5f0;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.due-form {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem;
+    background-color: rgba(183, 131, 131, 0.15);
+    border: 2px solid #2c2c2c;
+}
+
+.due-form label {
+    font-weight: 700;
+    color: #2c2c2c;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+.due-form input[type="date"] {
+    flex: 1;
+    border: 2px solid #2c2c2c;
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-size: 0.95rem;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+#todo-form button[type="submit"] {
+    padding: 1rem;
+    background-color: #c71220;
+    color: #f5f5f0;
+    border: 3px solid #2c2c2c;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+#todo-form button[type="submit"]:hover {
+    background-color: #2c2c2c;
+    color: #f5f5f0;
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+}
 .todo-item {
   height: 150px;
   background: #fff;
@@ -220,12 +301,6 @@ aside::before {
     letter-spacing: 0.5px;
     padding-bottom: 0.25rem;
 }
-
-.todo-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #2c2c2c;
-  }
 
 .todo-date {
     font-size: 0.75rem;
