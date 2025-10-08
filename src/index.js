@@ -1,6 +1,3 @@
-import "./styles.css";
-
-
 class Todo {
     constructor(title, description, due) {
         this.title = title;
@@ -86,9 +83,8 @@ function addTodoLibrary (todo) {
     </div>
     `
 
-    const todoSection = document.querySelector(".todo-list");
+    const todoSection = document.querySelector(".dashboard");
     todoSection.appendChild(newDiv);
 }
 
 addTodoLibrary(todo1);
-
