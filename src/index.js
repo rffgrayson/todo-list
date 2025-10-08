@@ -83,8 +83,8 @@ function addTodoLibrary (todo) {
     </div>
     `
 
-    const todoSection = document.querySelector(".dashboard");
-    todoSection.appendChild(newDiv);
+    const dashboard = document.querySelector(".dashboard");
+    dashboard.appendChild(newDiv);
 }
 
 addTodoLibrary(todo1);
