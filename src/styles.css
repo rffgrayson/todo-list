@@ -159,6 +159,14 @@ aside::before {
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.layout-form.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 #todo-form {
@@ -171,6 +179,14 @@ aside::before {
     border: 3px solid #2c2c2c;
     box-shadow: 8px 8px 0 rgba(199, 18, 32, 0.2), 0 0 0 6px #f5f5f0;
     z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#todo-form.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .form-elements {
