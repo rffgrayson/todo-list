@@ -1,3 +1,5 @@
+import "./styles.css";
+
 class Todo {
     constructor(title, description, due) {
         this.title = title;
