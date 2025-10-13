@@ -386,12 +386,22 @@ textarea {
     transition: all 0.3s ease;
   }
   
-  .folder svg{
+  .default-svg{
+    display: block;
     height: 100px;
   }
 
-  .folder:hover {
-    transform: translateY(-2px) scale(1.05);
+  .hover-svg {
+    display: none;
+  }
+
+  .folder:hover .default-svg {
+    display: none;
+  }
+
+  .folder:hover .hover-svg {
+    display: block;
+    height: 100px;
   }
 
   .folder-title {
