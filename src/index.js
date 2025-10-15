@@ -15,14 +15,6 @@ class Todo {
     }
 }
 
-
-const todo1 = new Todo("Study", "Finish Odin Project assignment", "2025-10-10");
-console.log(todo1);
-todo1.changeStatus();
-console.log(todo1);
-console.log("todo1.status:", todo1.status);
-
-
 class Folder {
     constructor(title) {
         this.title = title;
@@ -37,25 +29,6 @@ class Folder {
         this.list.remove(todo);
     }
 }
-
-const file1 = new Folder("test");
-console.log(file1);
-file1.addTodo(todo1);
-console.log(file1);
-console.log("todo1.status:", todo1.status);
-console.log("folder todo status:", file1.list[0].status);
-
-todo1.changeStatus();
-console.log(todo1);
-console.log(file1);
-console.log("todo1.status:", todo1.status);
-console.log("folder todo status:", file1.list[0].status);
-
-const fileBtn = document.querySelector("#file-btn");
-
-fileBtn.addEventListener("click", ()=> {
-
-});
     
 function addTodoLibrary (todo) {
     console.log(todo);
@@ -107,8 +80,3 @@ function addFolderToLibrary (folder) {
     dashboard.appendChild(newDiv);
 };
 
-addTodoLibrary(todo1);
-addFolderToLibrary(file1);
-
-const todo2 = new Todo("Study", "Finish Odin Project assignment asfdfdsfdsfdsffdsfdsdfdsfdsffs", "2025-10-10");
-addTodoLibrary(todo2);
