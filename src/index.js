@@ -58,8 +58,8 @@ function addTodoLibrary (todo) {
     </div>
     `;
 
-    const dashboard = document.querySelector(".dashboard");
-    dashboard.appendChild(newDiv);
+    const todoSection = document.querySelector(".todo-section");
+    todoSection.appendChild(newDiv);
 }
 
 function addFolderToLibrary (folder) {
@@ -76,7 +76,12 @@ function addFolderToLibrary (folder) {
     </div>
     `;
 
-    const dashboard = document.querySelector(".dashboard");
-    dashboard.appendChild(newDiv);
+    const folderSection = document.querySelector(".folder-section");
+    folderSection.appendChild(newDiv);
 };
 
+const todo1 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo1);
+const folder1 = new Folder("My Folder");
+
+addFolderToLibrary(folder1);
