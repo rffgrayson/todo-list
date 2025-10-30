@@ -82,6 +82,23 @@ function addFolderToLibrary (folder) {
 
 const todo1 = new Todo("Example Todo", "Some description", "2025-10-15");
 addTodoLibrary(todo1);
+const todo2 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo2);
+const todo3 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo3);
+const todo4 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo4);
+const todo5 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo5);
+const todo6 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo6);
+const todo7 = new Todo("Example Todo", "Some description", "2025-10-15");
+addTodoLibrary(todo7);
+
 const folder1 = new Folder("My Folder");
+const folder2 = new Folder("My Folder");
+const folder3 = new Folder("My Folder");
 
 addFolderToLibrary(folder1);
+addFolderToLibrary(folder2);
+addFolderToLibrary(folder3);
