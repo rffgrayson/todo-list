@@ -144,8 +144,22 @@ aside::before {
     position: relative;
     padding: 1.5rem;
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: auto 1fr;
     gap:1rem;
+}
+
+.folder-section {
+    position: relative;
+    display: flex;
+    gap:1rem;
+}
+
+.todo-section {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 280px); /* ← Change to auto-fit */
+    grid-auto-rows: 160px;
+    gap: 1.5rem;
 }
 
 .layout-form {
@@ -286,6 +300,12 @@ textarea {
     transform: translateY(-4px);
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
 }
+
+.todo {
+    width: 280px;
+    height: 160px;
+}
+
 .todo-item {
   height: 150px;
   background: #fff;
