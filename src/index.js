@@ -94,7 +94,7 @@ folderBtn.addEventListener("click", () => {
 
 
 function hideAllForms() {
-    const allForm = document.querySelectorAll('.form, .layout-form')
+    const allForm = document.querySelectorAll('.form, .overlay')
     allForm.forEach(form => {
       form.classList.remove('active')
     });
