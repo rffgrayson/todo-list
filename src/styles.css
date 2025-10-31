@@ -301,6 +301,75 @@ textarea {
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
+#folder-form {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #fff;
+    padding: 2rem;
+    border: 3px solid #2c2c2c;
+    box-shadow: 8px 8px 0 rgba(199, 18, 32, 0.2), 0 0 0 6px #f5f5f0;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#folder-form.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#folder-form button[type="submit"] {
+    padding: 1rem;
+    background-color: #c71220;
+    color: #f5f5f0;
+    border: 3px solid #2c2c2c;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+#folder-form button[type="submit"]:hover {
+    background-color: #2c2c2c;
+    color: #f5f5f0;
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.folder-title {
+    border-radius: 4px;
+    font-size: 1rem;
+    display: flex;
+    gap: 0.5rem; 
+    align-items: center;
+}
+
+.folder-title label {
+  color: #2c2c2c;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.folder-title input[type="text"] {
+    padding: 0.5rem;
+    border: 2px solid #2c2c2c;
+    background-color: #f5f5f0;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+
 .todo {
     width: 280px;
     height: 160px;
