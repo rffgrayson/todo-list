@@ -80,18 +80,7 @@ function addFolderToLibrary (folder) {
     folderSection.appendChild(newDiv);
 };
 
-const fileBtn = document.querySelector("#file-btn");
-
-fileBtn.addEventListener("click", () => {
-
-});
-
-const folderBtn = document.querySelector("#project-btn");
-
-folderBtn.addEventListener("click", () => {
-
-});
-
+let currentForm = null; 
 
 function hideAllForms() {
     const allForm = document.querySelectorAll('.form, .overlay')
@@ -99,6 +88,35 @@ function hideAllForms() {
       form.classList.remove('active')
     });
 }
+
+function toggleForm(formId) {
+    if (currentForm === formId) {
+        hideAllForms();
+        currentForm = null;
+        return;
+    }
+    
+    hideAllForms();
+    
+    const form = document.querySelector(`#${formId}-form`);
+    const overlay = document.querySelector('.overlay');
+    
+    form.classList.add('active');
+    overlay.classList.add('active');
+    currentForm = formId;
+}
+
+
+const fileBtn = document.querySelector("#file-btn");
+fileBtn.addEventListener("click", () => {
+    toggleForm('todo');
+});
+
+const folderBtn = document.querySelector("#project-btn");
+folderBtn.addEventListener("click", () => {
+    toggleForm('folder');
+});
+
 
 
 
