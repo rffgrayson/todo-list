@@ -112,7 +112,7 @@ fileBtn.addEventListener("click", () => {
     toggleForm('todo');
 });
 
-const folderBtn = document.querySelector("#project-btn");
+const folderBtn = document.querySelector("#folder-btn");
 folderBtn.addEventListener("click", () => {
     toggleForm('folder');
 });
