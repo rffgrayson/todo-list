@@ -117,8 +117,7 @@ folderBtn.addEventListener("click", () => {
     toggleForm('folder');
 });
 
-
-
-
-
-
+document.querySelector(".overlay").addEventListener("click", () => {
+    hideAllForms();
+    currentForm = null;
+});
