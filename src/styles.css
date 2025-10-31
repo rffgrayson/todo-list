@@ -162,7 +162,7 @@ aside::before {
     gap: 1.5rem;
 }
 
-.layout-form {
+.overlay {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -178,7 +178,7 @@ aside::before {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.layout-form.active {
+.overlay.active {
     opacity: 1;
     visibility: visible;
 }
