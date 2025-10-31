@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 2px solid red;
 }
 
 body {
@@ -184,6 +185,7 @@ aside::before {
 }
 
 #todo-form {
+    position: absolute;
     max-width: 400px;
     display: flex;
     flex-direction: column;
@@ -302,6 +304,7 @@ textarea {
 }
 
 #folder-form {
+    position: absolute;
     max-width: 400px;
     display: flex;
     flex-direction: column;
