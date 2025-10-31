@@ -80,46 +80,11 @@ function addFolderToLibrary (folder) {
     folderSection.appendChild(newDiv);
 };
 
-// --- Todos ---
-const todo1 = new Todo("Buy groceries", "Milk, eggs, bread, and fruit", "2025-10-15");
-addTodoLibrary(todo1);
+const fileBtn = document.querySelector("#file-btn");
 
-const todo2 = new Todo("Finish project report", "Complete the financial analysis section", "2025-10-20");
-addTodoLibrary(todo2);
-
-const todo3 = new Todo("Workout session", "Leg day at the gym", "2025-10-17");
-addTodoLibrary(todo3);
-
-const todo4 = new Todo("Book dentist appointment", "Routine cleaning and check-up", "2025-10-22");
-addTodoLibrary(todo4);
-
-const todo5 = new Todo("Call mom", "Weekly catch-up call", "2025-10-16");
-addTodoLibrary(todo5);
-
-const todo6 = new Todo("Read a book", "Finish reading 'Atomic Habits'", "2025-10-25");
-addTodoLibrary(todo6);
-
-const todo7 = new Todo("Plan weekend trip", "Find spots to visit in Penang", "2025-10-18");
-addTodoLibrary(todo7);
-
-const folder1 = new Folder("Personal");
-addFolderToLibrary(folder1);
-const folder2 = new Folder("Work");
-addFolderToLibrary(folder2);
-const folder3 = new Folder("Health & Fitness");
-addFolderToLibrary(folder3);
-
-
-folder1.addTodo(todo1); 
-folder1.addTodo(todo5); 
-folder1.addTodo(todo7); 
-
-folder2.addTodo(todo2);
-
-folder3.addTodo(todo3); 
-folder3.addTodo(todo4); 
-folder3.addTodo(todo6); 
-
-console.log(folder1);
-console.log(folder2);
-console.log(folder3);
+fileBtn.addEventListener("click", () => {
+    let todoForm = document.querySelector("#todo-form");
+    todoForm.classList.toggle('active');
+    let layoutForm = document.querySelector(".layout-form");
+    layoutForm.classList.toggle('active');
+});
