@@ -83,8 +83,24 @@ function addFolderToLibrary (folder) {
 const fileBtn = document.querySelector("#file-btn");
 
 fileBtn.addEventListener("click", () => {
-    let todoForm = document.querySelector("#todo-form");
-    todoForm.classList.toggle('active');
-    let layoutForm = document.querySelector(".layout-form");
-    layoutForm.classList.toggle('active');
+
 });
+
+const folderBtn = document.querySelector("#project-btn");
+
+folderBtn.addEventListener("click", () => {
+
+});
+
+
+function hideAllForms() {
+    const allForm = document.querySelectorAll('.form, .layout-form')
+    allForm.forEach(form => {
+      form.classList.remove('active')
+    });
+}
+
+
+
+
+
