@@ -80,23 +80,6 @@ function addFolderToLibrary (folder) {
     folderSection.appendChild(newDiv);
 };
 
-<<<<<<< HEAD
-// --- Todos ---
-const todo1 = new Todo("Buy groceries", "Milk, eggs, bread, and fruit", "2025-10-15");
-const todo2 = new Todo("Finish project report", "Complete the financial analysis section", "2025-10-20");
-const todo3 = new Todo("Workout session", "Leg day at the gym", "2025-10-17");
-const todo4 = new Todo("Book dentist appointment", "Routine cleaning and check-up", "2025-10-22");
-const todo5 = new Todo("Call mom", "Weekly catch-up call", "2025-10-16");
-const todo6 = new Todo("Read a book", "Finish reading 'Atomic Habits'", "2025-10-25");
-const todo7 = new Todo("Plan weekend trip", "Find spots to visit in Penang", "2025-10-18");
-
-const folder1 = new Folder("Personal");
-addFolderToLibrary(folder1);
-const folder2 = new Folder("Work");
-addFolderToLibrary(folder2);
-const folder3 = new Folder("Health & Fitness");
-addFolderToLibrary(folder3);
-=======
 let currentForm = null; 
 
 function hideAllForms() {
@@ -122,8 +105,6 @@ function toggleForm(formId) {
     overlay.classList.add('active');
     currentForm = formId;
 }
->>>>>>> bc8b2d0460473e8eec6bd161e9db5cd5491c02ef
-
 
 const fileBtn = document.querySelector("#file-btn");
 fileBtn.addEventListener("click", () => {
