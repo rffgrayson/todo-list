@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 2px solid red;
 }
 
 body {
@@ -316,6 +317,51 @@ textarea {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.outer-todo {
+    padding: 2rem;
+    background: linear-gradient(135deg, #f5f5f0 0%, #ffffff 100%);
+    border: 3px solid #2c2c2c;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+
+.outer-todo::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid #c71220;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.outer-folder {
+    padding: 2rem;
+    background: linear-gradient(135deg, #181801 0%, #ffffff 100%);
+    border: 3px solid #2c2c2c;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.outer-folder::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border: 2px solid #c71220;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.folder-icon {
+    background-color: none;
 }
 
 #folder-form.active {
