@@ -502,6 +502,7 @@ textarea {
   .hover-svg {
     display: none;
   }
+  
   .folder:hover {
     background: linear-gradient(135deg, #f8f5f2 0%, #ebe5df 100%);
     border-radius: 8px;
