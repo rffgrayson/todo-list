@@ -122,3 +122,18 @@ document.querySelector(".overlay").addEventListener("click", (e) => {
         currentForm = null;
     }
 });
+
+document.querySelector("#todo-button").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector("#todo-form input[type='text']").value;
+    const description = document.querySelector("#todo-form textarea").value;
+    const date = document.querySelector("#todo-form input[type='date']").value;
+
+    const newtodo = new Todo (title,description, date);
+
+    document.querySelector("#todo-form").reset();
+    addTodoLibrary(newtodo);
+    hideAllForms();
+    currentForm = null;
+})
