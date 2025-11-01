@@ -137,3 +137,17 @@ document.querySelector("#todo-button").addEventListener("click", (e) => {
     hideAllForms();
     currentForm = null;
 })
+
+
+document.querySelector("#folder-button").addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const title = document.querySelector("#folder-form input[type='text']").value;
+
+    const newfolder = new Folder (title);
+
+    document.querySelector("#folder-form").reset();
+    addFolderToLibrary(newfolder);
+    hideAllForms();
+    currentForm = null;
+})
