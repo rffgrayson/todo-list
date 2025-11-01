@@ -123,7 +123,7 @@ document.querySelector(".overlay").addEventListener("click", (e) => {
     }
 });
 
-document.querySelector("#todo-button").addEventListener("click", (e) => {
+document.querySelector("#todo-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
     const title = document.querySelector("#todo-form input[type='text']").value;
@@ -139,7 +139,7 @@ document.querySelector("#todo-button").addEventListener("click", (e) => {
 })
 
 
-document.querySelector("#folder-button").addEventListener("click", (e) => {
+document.querySelector("#folder-form").addEventListener("submit", (e) => {
     e.preventDefault();
 
     const title = document.querySelector("#folder-form input[type='text']").value;
