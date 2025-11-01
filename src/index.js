@@ -80,6 +80,7 @@ function addFolderToLibrary (folder) {
     folderSection.appendChild(newDiv);
 };
 
+<<<<<<< HEAD
 // --- Todos ---
 const todo1 = new Todo("Buy groceries", "Milk, eggs, bread, and fruit", "2025-10-15");
 const todo2 = new Todo("Finish project report", "Complete the financial analysis section", "2025-10-20");
@@ -95,18 +96,46 @@ const folder2 = new Folder("Work");
 addFolderToLibrary(folder2);
 const folder3 = new Folder("Health & Fitness");
 addFolderToLibrary(folder3);
+=======
+let currentForm = null; 
+
+function hideAllForms() {
+    const allForm = document.querySelectorAll('.form, .overlay')
+    allForm.forEach(form => {
+      form.classList.remove('active')
+    });
+}
+
+function toggleForm(formId) {
+    if (currentForm === formId) {
+        hideAllForms();
+        currentForm = null;
+        return;
+    }
+    
+    hideAllForms();
+    
+    const form = document.querySelector(`#${formId}-form`);
+    const overlay = document.querySelector('.overlay');
+    
+    form.classList.add('active');
+    overlay.classList.add('active');
+    currentForm = formId;
+}
+>>>>>>> bc8b2d0460473e8eec6bd161e9db5cd5491c02ef
 
 
-folder1.addTodo(todo1); 
-folder1.addTodo(todo5); 
-folder1.addTodo(todo7); 
+const fileBtn = document.querySelector("#file-btn");
+fileBtn.addEventListener("click", () => {
+    toggleForm('todo');
+});
 
-folder2.addTodo(todo2);
+const folderBtn = document.querySelector("#folder-btn");
+folderBtn.addEventListener("click", () => {
+    toggleForm('folder');
+});
 
-folder3.addTodo(todo3); 
-folder3.addTodo(todo4); 
-folder3.addTodo(todo6); 
-
-console.log(folder1);
-console.log(folder2);
-console.log(folder3);
+document.querySelector(".overlay").addEventListener("click", () => {
+    hideAllForms();
+    currentForm = null;
+});
