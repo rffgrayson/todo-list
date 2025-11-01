@@ -4,7 +4,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 2px solid red;
 }
 
 body {
@@ -147,6 +146,7 @@ aside::before {
     display: grid;
     grid-template-rows: auto 1fr;
     gap:1rem;
+    background: linear-gradient(135deg, #f8f5f2 0%, #ebe5df 100%);
 }
 
 .folder-section {
@@ -158,7 +158,7 @@ aside::before {
 .todo-section {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 280px); /* ← Change to auto-fit */
+    grid-template-columns: repeat(auto-fit, 280px); 
     grid-auto-rows: 160px;
     gap: 1.5rem;
 }
@@ -172,8 +172,9 @@ aside::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 5;
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 100;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -184,7 +185,7 @@ aside::before {
     visibility: visible;
 }
 
-#todo-form {
+.form {
     position: absolute;
     max-width: 400px;
     display: flex;
@@ -200,10 +201,10 @@ aside::before {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-#todo-form.active {
+.form.active {
     opacity: 1;
     visibility: visible;
-}
+  }
 
 .form-elements {
     display: flex;
@@ -211,7 +212,7 @@ aside::before {
     gap: 0.5rem;
 }
 
-.todo-title {
+.todo-title, .folder-title {
     border-radius: 4px;
     font-size: 1rem;
     display: flex;
@@ -219,7 +220,7 @@ aside::before {
     align-items: center;
 }
 
-.todo-title label, .due-form label {
+.todo-title label, .folder-title label, .due-form label {
   color: #2c2c2c;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
@@ -227,7 +228,7 @@ aside::before {
     font-weight: 700;
 }
 
-.todo-title input[type="text"] {
+.todo-title input[type="text"], .folder-title input[type="text"] {
     padding: 0.5rem;
     border: 2px solid #2c2c2c;
     background-color: #f5f5f0;
@@ -235,7 +236,14 @@ aside::before {
     font-size: 0.95rem;
     font-weight: 400;
     transition: all 0.3s ease;
+    flex: auto;
 }
+
+.todo-title input[type="text"]:focus, .folder-title input[type="text"]:focus {
+    outline: none;
+    border-color: #d4453a;
+    box-shadow: 0 0 0 3px rgba(212, 69, 58, 0.1);
+  }
 
 .form-elements textarea {
     padding: 0.85rem;
@@ -246,6 +254,12 @@ aside::before {
     font-weight: 400;
     transition: all 0.3s ease;
 }
+
+textarea:focus {
+    outline: none;
+    border-color: #d4453a;
+    box-shadow: 0 0 0 3px rgba(212, 69, 58, 0.1);
+  }
 
 .due-form {
     display: flex;
@@ -303,22 +317,6 @@ textarea {
     box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
 }
 
-#folder-form {
-    position: absolute;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    background: #fff;
-    padding: 2rem;
-    border: 3px solid #2c2c2c;
-    box-shadow: 8px 8px 0 rgba(199, 18, 32, 0.2), 0 0 0 6px #f5f5f0;
-    z-index: 10;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
 .outer-todo {
     padding: 2rem;
     background: linear-gradient(135deg, #f5f5f0 0%, #ffffff 100%);
@@ -328,41 +326,14 @@ textarea {
 }
 
 
-.outer-todo::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border: 2px solid #c71220;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.outer-folder {
+.outer-todo, .outer-folder {
     padding: 2rem;
-    background: linear-gradient(135deg, #181801 0%, #ffffff 100%);
-    border: 3px solid #2c2c2c;
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+    border: 1px solid #e8ddd0;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
     position: relative;
-}
-
-.outer-folder::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border: 2px solid #c71220;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.folder-icon {
-    background-color: none;
-}
+  }
 
 #folder-form.active {
     opacity: 1;
@@ -531,6 +502,12 @@ textarea {
   .hover-svg {
     display: none;
   }
+  .folder:hover {
+    background: linear-gradient(135deg, #f8f5f2 0%, #ebe5df 100%);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
 
   .folder:hover .default-svg {
     display: none;
@@ -549,3 +526,5 @@ textarea {
     letter-spacing: 0.15em;
     font-size: 1.1rem;
   }
+
+  
