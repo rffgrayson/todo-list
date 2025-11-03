@@ -4,6 +4,7 @@ class Todo {
         this.description = description;
         this.due = due;
         this.status = false;
+        this.folderId = folderId;
         this.id = "todo" + crypto.randomUUID();
     }
 
@@ -16,15 +17,18 @@ class Todo {
 class Folder {
     constructor(title) {
         this.title = title;
-        this.list = [];
+        this.todos = [];
+        this.id = "folder" + crypto.randomUUID();
     }
 
     addTodo (todo) {
-        this.list.push(todo);
+        if (todo.folderId = this.id) {
+            this.todos.push(todo);
+        }
     }
 
-    removeTodo (todo) {
-        this.list.remove(todo);
+    removeTodo (todoId) {
+        this.todos.filter(todo => todo.id !== todoId);
     }
 }
 
