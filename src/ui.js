@@ -1,12 +1,14 @@
 class UImanager {
     constructor () {
+        this.todoSection = document.querySelector(".todo-section");
+        this.folderSection = document.querySelector(".folder-section");
     }
 
-    addTodoLibrary (todo) {
-        console.log(todo);
+    renderTodo (todo) {
         const newDiv = document.createElement("div");
         newDiv.classList.toggle(`todo`);
-        newDiv.id = `${todo.id}`;
+        newDiv.id = todo.id;
+        
         newDiv.innerHTML += `
         <div class="todo-item" data-priority="high">
           <div class="item-section">
@@ -29,8 +31,7 @@ class UImanager {
             </div>
         </div>
         `;
-    
-        const todoSection = document.querySelector(".todo-section");
+
         todoSection.appendChild(newDiv);
     }
     
@@ -64,8 +65,7 @@ class UImanager {
             ${folder.title}
         </div>
         `;
-    
-        const folderSection = document.querySelector(".folder-section");
+
         folderSection.appendChild(newDiv);
     };
 }
