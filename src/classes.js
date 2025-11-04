@@ -29,6 +29,10 @@ class Folder {
     removeTodo (todoId) {
         this.todos.filter(todo => todo.id !== todoId);
     }
+
+    clearInput () {
+        document.querySelectorAll('input, textarea').forEach(input => input.value = '');
+    }
 }
 
 export { Todo, Folder };
