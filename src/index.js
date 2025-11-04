@@ -1,8 +1,15 @@
 import "./styles.css";
 import { Todo, Folder } from './classes.js';
-import { UImanager } from "./ui.js";
+import { UImanager } from './ui.js';
 
-    
+class TodoApp { 
+    constructor () {
+        this.folders = [];
+        this.todos = [];
+        this.ui = new UImanager();
+    }
+
+}
 
 
 let currentForm = null; 
