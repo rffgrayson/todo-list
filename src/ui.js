@@ -97,7 +97,10 @@ class UImanager {
             title: document.querySelector("#folder-form input[type='text']").value,
         };
     }
-
+    
+    clearInput () {
+        document.querySelectorAll('input, textarea').forEach(input => input.value = '');
+    }
 }
 
 export { UImanager };
