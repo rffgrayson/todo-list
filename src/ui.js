@@ -1,3 +1,4 @@
+
 class UImanager {
     constructor () {
         this.todoSection = document.querySelector(".todo-section");
@@ -67,23 +68,36 @@ class UImanager {
         `;
 
         this.folderSection.appendChild(newDiv);
-    };
+    }
 
     hideAllForms() {
         const allForm = document.querySelectorAll('.form, .overlay')
         allForm.forEach(form => {
             form.classList.remove('active')
             });
-    };
+    }
 
     showForm(formId) {    
         const form = document.querySelector(`#${formId}-form`);
         const overlay = document.querySelector('.overlay');
         form.classList.add('active');
         overlay.classList.add('active');
-    };
+    }
+
+    retrieveTodoForm () {
+        return {
+            title: document.querySelector("#todo-form input[type='text']").value,
+            description: document.querySelector("#todo-form textarea").value,
+            due: document.querySelector("#todo-form input[type='date']").value,
+        };
+    }
+
+    retrieveFolderForm () {
+        return {
+            title: document.querySelector("#folder-form input[type='text']").value,
+        };
+    }
 
 }
-
 
 export { UImanager };
