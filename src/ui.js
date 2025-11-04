@@ -32,10 +32,10 @@ class UImanager {
         </div>
         `;
 
-        todoSection.appendChild(newDiv);
+        this.todoSection.appendChild(newDiv);
     }
     
-    addFolderToLibrary (folder) {
+    renderFolder (folder) {
         console.log(folder);
         const newDiv = document.createElement("div");
         newDiv.classList.toggle("folder");
@@ -66,8 +66,24 @@ class UImanager {
         </div>
         `;
 
-        folderSection.appendChild(newDiv);
+        this.folderSection.appendChild(newDiv);
     };
+
+    hideAllForms() {
+        const allForm = document.querySelectorAll('.form, .overlay')
+        allForm.forEach(form => {
+            form.classList.remove('active')
+            });
+    };
+
+    showForm(formId) {    
+        const form = document.querySelector(`#${formId}-form`);
+        const overlay = document.querySelector('.overlay');
+        form.classList.add('active');
+        overlay.classList.add('active');
+    };
+
 }
+
 
 export { UImanager };
