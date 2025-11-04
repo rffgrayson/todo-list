@@ -35,11 +35,13 @@ class TodoApp {
         document.querySelector('#todo-form button[type="submit"]').addEventListener('click', (e) => {
             e.preventDefault();
             this.TodoSubmitHandler();
+            this.ui.clearInput();
         })
 
         document.querySelector('#folder-form button[type="submit"]').addEventListener('click', (e) => {
             e.preventDefault();
             this.FolderSubmitHandler();
+            this.ui.clearInput();
         })
     }
 
