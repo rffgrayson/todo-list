@@ -4,7 +4,6 @@ class Todo {
         this.description = description;
         this.due = due;
         this.status = false;
-        this.folderId = folderId;
         this.id = "todo" + crypto.randomUUID();
     }
 
