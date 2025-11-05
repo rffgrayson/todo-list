@@ -21,10 +21,10 @@ class TodoApp {
     
     initializeEventListeners() {
         document.querySelector('#file-btn').addEventListener('click', () => {
-            this.ui.showForm('todo');
+            this.ui.toggleForm('todo');
         });
         document.querySelector('#folder-btn').addEventListener('click', () => {     
-            this.ui.showForm('folder');
+            this.ui.toggleForm('folder');
         });
         document.querySelector('.overlay').addEventListener('click', (e) => {
             if (e.target === e.currentTarget) {
@@ -32,13 +32,13 @@ class TodoApp {
             }
         });
 
-        document.querySelector('#todo-form button[type="submit"]').addEventListener('click', (e) => {
+        document.querySelector('#todo-form').addEventListener('submit', (e) => {
             e.preventDefault();
             this.TodoSubmitHandler();
             this.ui.clearInput();
         })
 
-        document.querySelector('#folder-form button[type="submit"]').addEventListener('click', (e) => {
+        document.querySelector('#folder-form').addEventListener('submit', (e) => {
             e.preventDefault();
             this.FolderSubmitHandler();
             this.ui.clearInput();
