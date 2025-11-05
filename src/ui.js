@@ -85,11 +85,13 @@ class UImanager {
     }
 
     retrieveTodoForm () {
+        console.log(document.querySelector("#todo-form select").value);
         return {
             title: document.querySelector("#todo-form input[type='text']").value,
             description: document.querySelector("#todo-form textarea").value,
             due: document.querySelector("#todo-form input[type='date']").value,
             priority: document.querySelector("#todo-form input[name='priority']:checked").value,
+            folderId: document.querySelector("#todo-form select").value,
         };
     }
 
@@ -108,6 +110,12 @@ class UImanager {
         }
     });
     document.querySelector("#low").checked = true;
+    }
+
+    addFolderSelection (folder) {
+        document.querySelector("#project").innerHTML += `
+        <option value="${folder.id}">${folder.title}</option>
+        `;
     }
 }
 
