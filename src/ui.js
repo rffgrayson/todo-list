@@ -1,4 +1,3 @@
-
 class UImanager {
     constructor () {
         this.todoSection = document.querySelector(".todo-section");
@@ -77,7 +76,8 @@ class UImanager {
             });
     }
 
-    showForm(formId) {    
+    toggleForm(formId) { 
+        this.hideAllForms();
         const form = document.querySelector(`#${formId}-form`);
         const overlay = document.querySelector('.overlay');
         form.classList.add('active');
@@ -97,7 +97,7 @@ class UImanager {
             title: document.querySelector("#folder-form input[type='text']").value,
         };
     }
-    
+
     clearInput () {
         document.querySelectorAll('input, textarea').forEach(input => input.value = '');
     }
