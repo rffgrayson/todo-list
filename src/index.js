@@ -44,11 +44,20 @@ class TodoApp {
             this.FolderSubmitHandler();
             this.ui.clearInput();
         })
+        document.querySelector('.folder-section').addEventListener('click', (e) => {
+            const folderDiv = e.target.closest('.folder');
+            if (folderDiv) {
+                const folderId = folderDiv.dataset.folderId;
+                this.currentFolder = this.folders.find(folder => folder.id === folderId);
+                this.ui.showTodosInFolder(folderId);
+            }
+        })
     }
 
     TodoSubmitHandler() {
         const todoData = this.ui.retrieveTodoForm();
-        const newTodo = new Todo(todoData.title, todoData.description, todoData.due, todoData.priority);
+        console.log(todoData.folderId);
+        const newTodo = new Todo(todoData.title, todoData.description, todoData.due, todoData.priority, todoData.folderId);
         this.todos.push(newTodo);
         this.currentFolder.addTodo(newTodo);
         this.ui.renderTodo(newTodo);
@@ -67,3 +76,4 @@ class TodoApp {
 }
 
 const app = new TodoApp();
+
