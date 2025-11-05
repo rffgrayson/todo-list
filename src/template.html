@@ -58,6 +58,21 @@
               <label for="due">Due</label>
               <input type="date" id="due" name="due" required>
           </div>
+          <div class="priority-form">
+            <label>Priority</label>
+            <div class="priority-buttons">
+              <input type="radio" id="low" name="priority" value="low" required>
+              <input type="radio" id="medium" name="priority" value="medium">
+              <input type="radio" id="high" name="priority" value="high">
+            </div>
+          </div>
+
+          <div class="project-form">
+              <label for="project">Project</label>
+              <select id="project" name="project">
+                  <option value="inbox">Choose...</option>
+              </select>
+          </div>
         </div>
         <button type="submit" id="todo-button">Add Todo</button>
       </form>
