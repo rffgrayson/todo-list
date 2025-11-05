@@ -1,9 +1,10 @@
 class Todo {
-    constructor(title, description, due, priority) {
+    constructor(title, description, due, priority,folderId) {
         this.title = title;
         this.description = description;
         this.due = due;
         this.priority = priority;
+        this.folderId = folderId;
         this.id = "todo" + crypto.randomUUID();
     }
 }
