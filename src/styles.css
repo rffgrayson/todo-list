@@ -451,6 +451,10 @@ btn {
   gap: 0.5rem 1rem;
 }
 
+.todo.hidden {
+    display: none;
+}
+
 .todo-header {
     display: grid;
     grid-template-columns: 1fr auto;
