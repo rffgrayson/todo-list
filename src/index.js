@@ -47,7 +47,7 @@ class TodoApp {
 
     TodoSubmitHandler() {
         const todoData = this.ui.retrieveTodoForm();
-        const newTodo = new Todo(todoData.title, todoData.description, todoData.due);
+        const newTodo = new Todo(todoData.title, todoData.description, todoData.due, todoData.priority);
         this.todos.push(newTodo);
         this.currentFolder.addTodo(newTodo);
         this.ui.renderTodo(newTodo);
