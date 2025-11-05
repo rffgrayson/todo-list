@@ -212,7 +212,7 @@ aside::before {
     gap: 0.5rem;
 }
 
-.todo-title, .folder-title {
+.todo-title, .folder-title, .priority-form, .project-form {
     border-radius: 4px;
     font-size: 1rem;
     display: flex;
@@ -220,7 +220,12 @@ aside::before {
     align-items: center;
 }
 
-.todo-title label, .folder-title label, .due-form label {
+.priority-form {
+    margin: 0.5rem 0;
+}
+
+
+.todo-title label, .folder-title label, .due-form label, .priority-form label, .project-form label {
   color: #2c2c2c;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
@@ -293,6 +298,22 @@ textarea {
     resize: vertical;
     min-height: 100px;
     line-height: 1.6;
+}
+
+#project {
+    flex: 1;
+}
+
+btn {
+    cursor: pointer;
+    padding: 0.5rem;
+    border: 2px solid #2c2c2c;
+    background-color: #f5f5f0;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    flex: auto;
 }
 
 #todo-form button[type="submit"] {
@@ -408,6 +429,18 @@ textarea {
   border: 2px solid black;
 }
 
+.todo-item[data-priority="low"] {
+  background-color: #e8f5e9;
+}
+
+.todo-item[data-priority="medium"] {
+  background-color: #fff3e0;
+}
+
+.todo-item[data-priority="high"] {
+  background-color: #ffebee;
+}
+
 .todo-item:hover {
     transform: translateY(-2px);
 }
@@ -449,7 +482,6 @@ textarea {
     display: flex;
     flex-direction: column; 
     gap: 0.5rem;
-    background: #fff;
     cursor: pointer;
     z-index: 2;
   }
@@ -527,4 +559,81 @@ textarea {
     font-size: 1.1rem;
   }
 
-  
+.priority-buttons {
+    display: flex;
+    gap: 0.25rem;
+    flex: 1;
+}
+
+.priority-buttons input[type="radio"] {
+    appearance: none;
+    height: 25px;
+    flex: 1;
+    border: 3px solid #2c2c2c;
+    background-color: #f5f5f0;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.priority-buttons input[type="radio"]#low {
+    background-color: #e8f5e9;
+}
+
+.priority-buttons input[type="radio"]#medium {
+    background-color: #fff3e0;
+}
+
+.priority-buttons input[type="radio"]#high {
+    background-color: #ffebee;
+}
+
+.priority-buttons input[type="radio"]:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+}
+
+.priority-buttons input[type="radio"]:checked {
+    box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.priority-buttons input[type="radio"]#low:checked {
+    background-color: #7fb069;
+}
+
+.priority-buttons input[type="radio"]#medium:checked {
+    background-color: #ffff00;
+}
+
+.priority-buttons input[type="radio"]#high:checked {
+    background-color: #c71220;
+}
+
+#project {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid #2c2c2c;
+    background-color: #f5f5f0;
+    font-family: 'Noto Sans JP', Arial, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+#project:focus {
+    outline: none;
+    border-color: #c71220;
+    box-shadow: 0 0 0 3px rgba(199, 18, 32, 0.2);
+}
+
+#project option {
+    padding: 0.5rem;
+    background-color: #fff;
+}
+
+#project option:hover {
+    background-color: #f5f5f0;
+}
