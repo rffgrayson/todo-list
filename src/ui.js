@@ -8,6 +8,7 @@ class UImanager {
         const newDiv = document.createElement("div");
         newDiv.classList.toggle(`todo`);
         newDiv.id = todo.id;
+        newDiv.dataset.folderId = todo.folderId;
         
         newDiv.innerHTML += `
         <div class="todo-item" data-priority="${todo.priority}">
@@ -36,9 +37,9 @@ class UImanager {
     }
     
     renderFolder (folder) {
-        console.log(folder);
         const newDiv = document.createElement("div");
         newDiv.classList.toggle("folder");
+        newDiv.dataset.folderId = folder.id;
         newDiv.innerHTML += `
         <div class="folder-icon">
          <svg class="default-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -85,7 +86,6 @@ class UImanager {
     }
 
     retrieveTodoForm () {
-        console.log(document.querySelector("#todo-form select").value);
         return {
             title: document.querySelector("#todo-form input[type='text']").value,
             description: document.querySelector("#todo-form textarea").value,
@@ -117,6 +117,18 @@ class UImanager {
         <option value="${folder.id}">${folder.title}</option>
         `;
     }
+
+    showTodosInFolder(folderId) {
+        const todos = document.querySelectorAll('.todo');
+        todos.forEach(todo => {
+            if (todo.dataset.folderId === folderId) {
+                todo.classList.remove('hidden');
+            } else {
+                todo.classList.add('hidden');
+            }
+        });
+    }
+
 }
 
 export { UImanager };
