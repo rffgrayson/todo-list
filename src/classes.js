@@ -1,15 +1,10 @@
 class Todo {
-    constructor(title, description, due) {
+    constructor(title, description, due, priority) {
         this.title = title;
         this.description = description;
         this.due = due;
-        this.status = false;
+        this.priority = priority;
         this.id = "todo" + crypto.randomUUID();
-    }
-
-    changeStatus () {
-      this.status = !this.status;
-      return this.status;
     }
 }
 
