@@ -1,5 +1,5 @@
 class Todo {
-    constructor(title, description, due, priority,folderId) {
+    constructor(title, description, due, priority, folderId) {
         this.title = title;
         this.description = description;
         this.due = due;
@@ -17,7 +17,7 @@ class Folder {
     }
 
     addTodo (todo) {
-        if (todo.folderId = this.id) {
+        if (todo.folderId === this.id) {
             this.todos.push(todo);
         }
     }
