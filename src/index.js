@@ -13,10 +13,11 @@ class TodoApp {
     }
 
     initializeDefaultFolder() {
-        const defaultFolder = new Folder("Default");
-        this.folders.push(defaultFolder);
-        this.currentFolder = defaultFolder;
-        this.ui.renderFolder(defaultFolder);
+        const Home = new Folder("Home");
+        this.folders.push(Home);
+        this.currentFolder = Home;
+        this.ui.renderFolder(Home);
+        this.ui.addFolderSelection(Home);
     }
     
     initializeEventListeners() {
@@ -59,6 +60,7 @@ class TodoApp {
         const newFolder = new Folder(folderData.title);
         this.folders.push(newFolder);
         this.ui.renderFolder(newFolder);
+        this.ui.addFolderSelection(newFolder);
         this.ui.hideAllForms();
     }
 
