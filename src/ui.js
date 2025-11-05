@@ -10,7 +10,7 @@ class UImanager {
         newDiv.id = todo.id;
         
         newDiv.innerHTML += `
-        <div class="todo-item" data-priority="high">
+        <div class="todo-item" data-priority="${todo.priority}">
           <div class="item-section">
             <div class="todo-header">
                 <span class="todo-title">${todo.title}</span>
@@ -89,6 +89,7 @@ class UImanager {
             title: document.querySelector("#todo-form input[type='text']").value,
             description: document.querySelector("#todo-form textarea").value,
             due: document.querySelector("#todo-form input[type='date']").value,
+            priority: document.querySelector("#todo-form input[name='priority']:checked").value,
         };
     }
 
@@ -99,7 +100,14 @@ class UImanager {
     }
 
     clearInput () {
-        document.querySelectorAll('input, textarea').forEach(input => input.value = '');
+    document.querySelectorAll('input, textarea').forEach(input => {
+        if (input.type === 'radio') {
+            input.checked = false;
+        } else {
+            input.value = '';
+        }
+    });
+    document.querySelector("#low").checked = true;
     }
 }
 
