@@ -8,7 +8,6 @@ class TodoApp {
         this.todos = [];
         this.ui = new UImanager();
         this.currentFolder = null;
-        this.initializeDefaultFolder();
         this.initializeEventListeners();
         this.loadSampleData();
     }
@@ -80,14 +79,6 @@ class TodoApp {
     });
 
     this.ui.showTodosInFolder(this.folders[0].id);
-    }
-
-    initializeDefaultFolder() {
-        const Home = new Folder("Home");
-        this.folders.push(Home);
-        this.currentFolder = Home;
-        this.ui.renderFolder(Home);
-        this.ui.addFolderSelection(Home);
     }
     
     initializeEventListeners() {
