@@ -109,7 +109,6 @@ class UImanager {
             input.value = '';
         }
     });
-    document.querySelector("#low").checked = true;
     }
 
     addFolderSelection (folder) {
@@ -129,6 +128,12 @@ class UImanager {
         });
     }
 
+    showAllTodos() {   
+      const todos = document.querySelectorAll('.todo');
+      todos.forEach(todo => {
+          todo.classList.remove('hidden');
+      });  
+    } 
 }
 
 export { UImanager };
