@@ -113,6 +113,9 @@ class TodoApp {
                 this.ui.showTodosInFolder(folderId);
             }
         })
+        document.querySelector('#show-all-todos-btn').addEventListener('click', ()=> {
+            this.ui.showAllTodos();
+        })
     }
 
     TodoSubmitHandler() {
