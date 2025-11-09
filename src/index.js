@@ -121,7 +121,10 @@ class TodoApp {
             
         if (button.classList.contains("delete-btn")){
             this.deleteTodo(todoId);
-        } else {
+        } else if (button.classList.contains("checkmark-btn")) {
+            this.changeStatus(todoId);
+        } 
+        else {
             console.log("others");
         }
 
@@ -160,6 +163,11 @@ class TodoApp {
         this.todos = this.todos.filter(todo => todo.id !== todoId);
         this.folders.forEach(folder => folder.removeTodo(todoId));
         this.ui.removeTodo(todoId);
+    }
+
+    changeStatus (todoId) {
+        this.todos.forEach(todo => todo.changeStatus(todoId));
+        this.ui.toggleStatus(todoId);
     }
 }
 
