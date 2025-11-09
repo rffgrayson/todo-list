@@ -112,6 +112,14 @@ class TodoApp {
         document.querySelector('#show-all-todos-btn').addEventListener('click', ()=> {
             this.ui.showAllTodos();
         })
+        document.querySelector('.todo-section').addEventListener('click',(e) => {
+            const button = e.target.closest('button');
+            if (!button) return;
+            const todoDiv = e.target.closest(".todo");
+            if (!todoDiv) return;
+
+            
+        })
     }
 
     handleTodoSubmit(data) {
