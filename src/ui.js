@@ -1,23 +1,102 @@
-class UImanager {
-    constructor () {
-        this.todoSection = document.querySelector(".todo-section");
-        this.folderSection = document.querySelector(".folder-section");
+class Form {
+    constructor(formId) {
+        this.form = document.querySelector(`#${formId}`);
+        this.overlay = document.querySelector('.overlay');
     }
 
-    renderTodo (todo) {
-        const newDiv = document.createElement("div");
-        newDiv.classList.toggle(`todo`);
-        newDiv.id = todo.id;
-        newDiv.dataset.folderId = todo.folderId;
+    show() {
+        this.hideAllForms();
+        this.form.classList.add('active');
+        this.overlay.classList.add('active');
+    }
+
+    hide() {
+        this.form.classList.remove('active');
+        this.overlay.classList.remove('active');
+    }
+
+    hideAllForms() {
+        const allForm = document.querySelectorAll('.form, .overlay')
+        allForm.forEach(form => {
+            form.classList.remove('active')
+            });
+    }
+
+    reset() {
+        this.form.reset();
+    }
+
+    onSubmit(callback) {
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (this.form.checkValidity()) {
+                callback(this.getData());
+                this.reset();
+                this.hide();
+            }
+        });
+    }
+}
+class TodoForm extends Form {
+    constructor() {
+        super('todo-form');
+    }
+
+    getData() {
+        return {
+            title: this.form.querySelector("input[name='title']").value,
+            description: this.form.querySelector("textarea[name='description']").value,
+            due: this.form.querySelector("input[name='due']").value,
+            priority: this.form.querySelector("input[name='priority']:checked")?.value,
+            folderId: this.form.querySelector("select[name='project']").value,
+        };
+    }
+
+    populateFolders(folders) {
+        const select = this.form.querySelector('select');
+        select.innerHTML = '<option value="">Choose...</option>';
+        folders.forEach(folder => {
+            select.innerHTML += `<option value="${folder.id}">${folder.title}</option>`;
+        });
+    }
+
+}
+
+class FolderForm extends Form {
+    constructor() {
+        super('folder-form');
+    }
+
+    getData() {
+        return {
+            title: this.form.querySelector("input[name='title']").value,
+        };
+    }
+}
+
+class UI {
+    constructor() {
+        this.todoSection = document.querySelector('.todo-section');
+        this.folderSection = document.querySelector('.folder-section');
+    }
+
+    renderTodo (todo, folder) {
+        const div = document.createElement("div");
+        div.classList.toggle(`todo`);
+        div.id = todo.id;
+        div.dataset.folderId = todo.folderId;
         
-        newDiv.innerHTML += `
+        div.innerHTML += `
         <div class="todo-item" data-priority="${todo.priority}">
           <div class="item-section">
             <div class="todo-header">
                 <span class="todo-title">${todo.title}</span>
-                <span class="todo-date">Due:${todo.due}</span>
             </div>
             <span class="todo-description">${todo.description}</span>
+            <div class="todo-footer">
+                <span>📁 ${folder.title}</span>
+                <span>📅 ${todo.due}</span>
+            </div>
           </div>
           <div class="button-section">
             <button class="checkmark-btn">
@@ -33,14 +112,14 @@ class UImanager {
         </div>
         `;
 
-        this.todoSection.appendChild(newDiv);
+        this.todoSection.appendChild(div);
     }
     
     renderFolder (folder) {
-        const newDiv = document.createElement("div");
-        newDiv.classList.toggle("folder");
-        newDiv.dataset.folderId = folder.id;
-        newDiv.innerHTML += `
+        const div = document.createElement("div");
+        div.classList.toggle("folder");
+        div.dataset.folderId = folder.id;
+        div.innerHTML += `
         <div class="folder-icon">
          <svg class="default-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -67,54 +146,7 @@ class UImanager {
         </div>
         `;
 
-        this.folderSection.appendChild(newDiv);
-    }
-
-    hideAllForms() {
-        const allForm = document.querySelectorAll('.form, .overlay')
-        allForm.forEach(form => {
-            form.classList.remove('active')
-            });
-    }
-
-    toggleForm(formId) { 
-        this.hideAllForms();
-        const form = document.querySelector(`#${formId}-form`);
-        const overlay = document.querySelector('.overlay');
-        form.classList.add('active');
-        overlay.classList.add('active');
-    }
-
-    retrieveTodoForm () {
-        return {
-            title: document.querySelector("#todo-form input[type='text']").value,
-            description: document.querySelector("#todo-form textarea").value,
-            due: document.querySelector("#todo-form input[type='date']").value,
-            priority: document.querySelector("#todo-form input[name='priority']:checked").value,
-            folderId: document.querySelector("#todo-form select").value,
-        };
-    }
-
-    retrieveFolderForm () {
-        return {
-            title: document.querySelector("#folder-form input[type='text']").value,
-        };
-    }
-
-    clearInput () {
-    document.querySelectorAll('input, textarea').forEach(input => {
-        if (input.type === 'radio') {
-            input.checked = false;
-        } else {
-            input.value = '';
-        }
-    });
-    }
-
-    addFolderSelection (folder) {
-        document.querySelector("#project").innerHTML += `
-        <option value="${folder.id}">${folder.title}</option>
-        `;
+        this.folderSection.appendChild(div);
     }
 
     showTodosInFolder(folderId) {
@@ -128,12 +160,19 @@ class UImanager {
         });
     }
 
-    showAllTodos() {   
-      const todos = document.querySelectorAll('.todo');
-      todos.forEach(todo => {
-          todo.classList.remove('hidden');
-      });  
-    } 
+    showAllTodos() {
+        const todos = document.querySelectorAll('.todo');
+        todos.forEach(todo => {
+            todo.classList.remove('hidden');
+        });
+    }
+
+    removeTodo(todoId) {
+        const element = document.getElementById(todoId);
+        if (element) {
+            element.remove();
+        }
+    }
 }
 
-export { UImanager };
+export { TodoForm, FolderForm, UI };

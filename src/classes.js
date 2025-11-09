@@ -1,11 +1,11 @@
 class Todo {
-    constructor(title, description, due, priority, folderId) {
+    constructor(title, description, due, priority, folderId, folder) {
         this.title = title;
         this.description = description;
         this.due = due;
         this.priority = priority;
         this.folderId = folderId;
-        this.id = "todo" + crypto.randomUUID();
+        this.id = crypto.randomUUID();
     }
 }
 
@@ -23,7 +23,7 @@ class Folder {
     }
 
     removeTodo (todoId) {
-        this.todos.filter(todo => todo.id !== todoId);
+        this.todos = this.todos.filter(todo => todo.id !== todoId);
     }
 }
 
