@@ -115,10 +115,16 @@ class TodoApp {
         document.querySelector('.todo-section').addEventListener('click',(e) => {
             const button = e.target.closest('button');
             if (!button) return;
-            const todoDiv = e.target.closest(".todo");
+            const todoDiv = button.closest(".todo");
             if (!todoDiv) return;
-
+            const todoId = todoDiv.id;
             
+        if (button.classList.contains("delete-btn")){
+            this.deleteTodo(todoId);
+        } else {
+            console.log("others");
+        }
+
         })
     }
 
@@ -150,6 +156,11 @@ class TodoApp {
         this.todoForm.populateFolders(this.folders);
     }
 
+    deleteTodo (todoId) {
+        this.todos = this.todos.filter(todo => todo.id !== todoId);
+        this.folders.forEach(folder => folder.removeTodo(todoId));
+        this.ui.removeTodo(todoId);
+    }
 }
 
 const app = new TodoApp();
