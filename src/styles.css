@@ -242,7 +242,7 @@ aside::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); 
     grid-auto-rows: 160px;
-    gap: 1.5rem;
+    gap: 1.25rem;
     margin: 0.25rem;
     overflow-y: auto;
     overflow-x: hidden;
@@ -306,10 +306,17 @@ aside::before {
     align-items: center;
 }
 
+  .folder-title {
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-size: 1.1rem;
+  }
+
+
 .priority-form {
     margin: 0.5rem 0;
 }
-
 
 .todo-title label, .folder-title label, .due-form label, .priority-form label, .project-form label {
   color: #2c2c2c;
@@ -603,8 +610,11 @@ btn {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 180px;
-  }
+    display: flex;
+    gap: 0.5rem; 
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
   
   .todo-description {
     font-size: 0.875rem;
@@ -713,15 +723,6 @@ btn {
     height: 100px;
     cursor: pointer;
   }
-
-  .folder-title {
-    text-align: center;
-    font-family: 'Courier New', monospace;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    font-size: 1.1rem;
-  }
-
 .priority-buttons {
     display: flex;
     gap: 0.25rem;
