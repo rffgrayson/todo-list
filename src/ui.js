@@ -23,8 +23,12 @@ class Form {
             });
     }
 
+
     reset() {
         this.form.reset();
+        this,editingTodoId = null;
+        const submitButton = this.form.querySelector("button[type='submit']");
+        submitButton.textContent = "Add Todo";
     }
 
     onSubmit(callback) {
