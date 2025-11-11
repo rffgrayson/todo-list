@@ -1,3 +1,4 @@
+
 class Form {
     constructor(formId) {
         this.form = document.querySelector(`#${formId}`);
@@ -40,6 +41,7 @@ class Form {
 class TodoForm extends Form {
     constructor() {
         super('todo-form');
+        this.editingTodoId = null;
     }
 
     getData() {
@@ -58,6 +60,18 @@ class TodoForm extends Form {
         folders.forEach(folder => {
             select.innerHTML += `<option value="${folder.id}">${folder.title}</option>`;
         });
+    }
+
+    populateForEdit(todo) {
+        this.editingTodoId = todo.id;
+        document.querySelector("input[name='title']").value = todo.title;
+        document.querySelector("textarea[name='description']").value = todo.description;
+        document.querySelector("input[name='due']").value = todo.due;
+        document.querySelector(`input[name='priority'][value='${todo.priority}']`).checked = true;
+        document.querySelector("select[name='project']").value = todo.folderId;
+
+        const submitButton = this.form.querySelector("button[type='submit']");
+        submitButton.textContent = "Update Todo";
     }
 
 }
@@ -184,6 +198,18 @@ class UI {
         const element = document.getElementById(todoId);
         if (element) {
             element.classList.toggle("completed");
+        }
+    }
+
+    overwriteTodo(todo, folder) {
+        const element = document.getElementById(todo.id);
+        if (element) {
+            element.querySelector('.todo-title').textContent = todo.title;
+            element.querySelector('.todo-description').textContent = todo.description;
+            element.querySelector('.todo-footer-due span').textContent = todo.due;
+            element.dataset.priority = todo.priority;
+            element.dataset.folderId = todo.folderId;
+            element.querySelector('.todo-footer-title span').textContent = folder.title;
         }
     }
 }
