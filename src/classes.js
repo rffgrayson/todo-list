@@ -14,6 +14,16 @@ class Todo {
             this.status = !this.status;
         }
     }
+
+update(todoid, title, description, due, priority, folderId) {
+    if (todoid === this.id) {
+        this.title = title;
+        this.description = description;
+        this.due = due;
+        this.priority = priority;
+        this.folderId = folderId;
+        }
+    }
 }
 
 class Folder {
