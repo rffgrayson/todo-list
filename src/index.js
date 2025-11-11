@@ -82,8 +82,7 @@ class TodoApp {
     
         this.ui.showTodosInFolder(this.folders[0].id);
     }
-    
-    
+
     initializeEventListeners() {
         document.querySelector('#file-btn').addEventListener('click', () => {
             this.todoForm.show();
@@ -98,7 +97,32 @@ class TodoApp {
             }
         });
 
-        this.todoForm.onSubmit((data) => this.handleTodoSubmit(data));
+        this.todoForm.onSubmit((data) =>{
+            if (this.todoForm.editingTodoId) {
+                 const todo = this.todos.find(t => t.id === this.todoForm.editingTodoId);
+                    if (todo) {
+                        todo.title = data.title;
+                        todo.description = data.description;
+                        todo.due = data.due;
+                        todo.priority = data.priority;
+                        if (todo.folderId !== data.folderId) {
+                                const oldFolder = this.folders.find(f => f.id === todo.folderId);
+                                if (oldFolder) 
+                                    oldFolder.removeTodo(todo.id);
+                                const todoDiv = document.getElementById(todo.id);
+                                    todoDiv.classList.add('hidden');
+                                const newFolder = this.folders.find(f => f.id === data.folderId);
+                                    if (newFolder) {
+                                        todo.folderId = data.folderId;
+                                        newFolder.addTodo(todo);
+                                    }
+                                }
+                const folder = this.folders.find(f => f.id === todo.folderId);
+                this.ui.overwriteTodo(todo, folder);
+            }         
+            this.todoForm.editingTodoId = null;
+            } else {this.handleTodoSubmit(data)}
+        });
         this.folderForm.onSubmit((data) => this.handleFolderSubmit(data));
 
         document.querySelector('.folder-section').addEventListener('click', (e) => {
@@ -125,10 +149,11 @@ class TodoApp {
             this.changeStatus(todoId);
         } 
         else {
-            console.log("others");
+            this.updateTodo(todoId);
         }
 
         })
+        document.querySelector
     }
 
     handleTodoSubmit(data) {
@@ -168,6 +193,12 @@ class TodoApp {
     changeStatus (todoId) {
         this.todos.forEach(todo => todo.changeStatus(todoId));
         this.ui.toggleStatus(todoId);
+    }
+
+    updateTodo (todoId) {
+        const todo = this.todos.find(t => t.id === todoId);
+        this.todoForm.show();
+        this.todoForm.populateForEdit(todo);
     }
 }
 
