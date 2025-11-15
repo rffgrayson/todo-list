@@ -14,6 +14,19 @@ class Todo {
             this.status = !this.status;
         }
     }
+
+    static fromJSON(data) {
+        const todo = new Todo(
+            data.title,
+            data.description,
+            data.due,
+            data.priority,
+            data.folderId
+        );
+        todo.id = data.id;
+        todo.status = data.status;
+        return todo;
+    }
 }
 
 class Folder {
@@ -31,6 +44,12 @@ class Folder {
 
     removeTodo (todoId) {
         this.todos = this.todos.filter(todo => todo.id !== todoId);
+    }
+
+    static fromJSON(data) {
+        const folder = new Folder(data.title);
+        folder.id = data.id;
+        return folder;
     }
 }
 
