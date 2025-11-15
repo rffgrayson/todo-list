@@ -49,6 +49,7 @@ class TodoApp {
                                 }
                 const folder = this.folders.find(f => f.id === todo.folderId);
                 this.ui.overwriteTodo(todo, folder);
+                this.saveToStorage();
             }        
             } else {this.handleTodoSubmit(data)}
             this.todoForm.editingTodoId = null;
@@ -116,6 +117,7 @@ class TodoApp {
         this.todos.push(newTodo);
         folder.addTodo(newTodo);
         this.ui.renderTodo(newTodo, folder);
+        this.saveToStorage();
     }
 
    handleFolderSubmit(data) {
@@ -123,17 +125,20 @@ class TodoApp {
         this.folders.push(newFolder);
         this.ui.renderFolder(newFolder);
         this.todoForm.populateFolders(this.folders);
+        this.saveToStorage();
     }
 
     deleteTodo (todoId) {
         this.todos = this.todos.filter(todo => todo.id !== todoId);
         this.folders.forEach(folder => folder.removeTodo(todoId));
         this.ui.removeTodo(todoId);
+        this.saveToStorage();
     }
 
     changeStatus (todoId) {
         this.todos.forEach(todo => todo.changeStatus(todoId));
         this.ui.toggleStatus(todoId);
+        this.saveToStorage();
     }
 
     updateTodo (todoId) {
@@ -197,6 +202,10 @@ class TodoApp {
                 const folder = this.folders.find(folder => folder.id === todo.folderId);
                 if (folder) {
                     this.ui.renderTodo(todo,folder);
+                } 
+
+                if (todo.status) {
+                    this.ui.toggleStatus(todo.id);
                 }
             })
             return true;
