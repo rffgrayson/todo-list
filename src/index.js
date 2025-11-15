@@ -119,10 +119,12 @@ class TodoApp {
                                 }
                 const folder = this.folders.find(f => f.id === todo.folderId);
                 this.ui.overwriteTodo(todo, folder);
-            }         
-            this.todoForm.editingTodoId = null;
+            }        
             } else {this.handleTodoSubmit(data)}
+            this.todoForm.editingTodoId = null;
         });
+
+
         this.folderForm.onSubmit((data) => this.handleFolderSubmit(data));
 
         document.querySelector('.folder-section').addEventListener('click', (e) => {
