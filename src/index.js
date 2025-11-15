@@ -155,7 +155,11 @@ class TodoApp {
         }
 
         })
-        document.querySelector
+        document.querySelector('#save-btn').addEventListener('click', () => {
+            if (this.saveToStorage()) {
+                alert('💾 Data saved successfully!');
+            }
+        })
     }
 
     handleTodoSubmit(data) {
@@ -201,6 +205,34 @@ class TodoApp {
         const todo = this.todos.find(t => t.id === todoId);
         this.todoForm.show();
         this.todoForm.populateForEdit(todo);
+    }
+
+    saveToStorage () {
+        try {
+                const data = {
+                    folders:this.folders.map(folder => ({
+                        id: folder.id,
+                        title: folder.title,
+                        todo: folder.todos.map(t => t.id)
+                        })),
+                    todos:this.todos.map(todo => ({
+                        id: todo.id,
+                        title: todo.title,
+                        description: todo.description,
+                        due: todo.due,
+                        priority: todo.priority,
+                        folderId: todo.folderId,
+                        status: todo.status
+                    }))
+                };
+
+                localStorage.setItem('todoAppData', JSON.stringify(data));
+                return true; 
+            }
+                catch (error) {
+                    alert("failed to save data. Your browser might have localStorage disable");
+                    return false;
+            }
     }
 }
 
